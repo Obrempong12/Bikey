@@ -40,7 +40,7 @@ To run the Bikey app locally, follow these steps:
    ```
 2. Navigate to the project directory:
    ```bash
-   cd BikeyApp
+   cd Bikey
    ```
 3. Install dependencies for the backend and mobile app:
    - Backend:
