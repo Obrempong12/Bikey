@@ -1,7 +1,7 @@
 // screens/HomeScreen.js
 
 import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Button } from 'react-native';
+import { View, Text, FlatList, Button, Alert } from 'react-native';
 import axios from 'axios';
 
 const HomeScreen = ({ route, navigation }) => {
@@ -23,11 +23,31 @@ const HomeScreen = ({ route, navigation }) => {
     fetchRides();
   }, [token]);
 
+  const handleBookRide = async (rideId) => {
+    try {
+      await axios.post(
+        `http://localhost:5000/api/rides/book/${rideId}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` }
+        }
+      );
+      Alert.alert('Success', 'Ride booked successfully!');
+      // Refresh the list of available rides.
+      fetchRides();
+    } catch (error) {
+      Alert.alert('Booking failed', 'Please try again');
+    }
+  };
+
   const renderRide = ({ item }) => (
     <View style={{ padding: 10, borderBottomWidth: 1 }}>
       <Text>Pickup: {item.pickupLocation}</Text>
       <Text>Destination: {item.destination}</Text>
       <Text>Status: {item.status}</Text>
+      {item.status === 'available' && (
+        <Button title="Book Ride" onPress={() => handleBookRide(item._id)} />
+      )}
     </View>
   );
 
