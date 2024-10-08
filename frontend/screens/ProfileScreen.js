@@ -6,6 +6,7 @@ import axios from 'axios';
 
 const ProfileScreen = ({ route, navigation }) => {
   const [profile, setProfile] = useState({});
+  const [updatedProfile, setUpdatedProfile] = useState({});
   const [newPassword, setNewPassword] = useState('');
   const { token } = route.params;
 
@@ -16,6 +17,7 @@ const ProfileScreen = ({ route, navigation }) => {
           headers: { Authorization: `Bearer ${token}` }
         });
         setProfile(response.data);
+        setUpdatedProfile(response.data);  // Initialize updatedProfile with the current profile details.
       } catch (error) {
         console.error('Error fetching profile', error);
       }
@@ -23,6 +25,19 @@ const ProfileScreen = ({ route, navigation }) => {
 
     fetchProfile();
   }, [token]);
+
+  const handleUpdateProfile = async () => {
+    try {
+      await axios.put(
+        'http://localhost:5000/api/users/profile',
+        updatedProfile,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      Alert.alert('Success', 'Profile updated successfully');
+    } catch (error) {
+      Alert.alert('Error', 'Failed to update profile');
+    }
+  };
 
   const handleChangePassword = async () => {
     try {
@@ -40,8 +55,20 @@ const ProfileScreen = ({ route, navigation }) => {
 
   return (
     <View style={{ padding: 20 }}>
-      <Text>Name: {profile.name}</Text>
-      <Text>Email: {profile.email}</Text>
+      <TextInput 
+        value={updatedProfile.name} 
+        onChangeText={(value) => setUpdatedProfile({ ...updatedProfile, name: value })} 
+        placeholder="Name" 
+        style={{ marginBottom: 20, borderBottomWidth: 1 }} 
+      />
+      <TextInput 
+        value={updatedProfile.email} 
+        onChangeText={(value) => setUpdatedProfile({ ...updatedProfile, email: value })} 
+        placeholder="Email" 
+        style={{ marginBottom: 20, borderBottomWidth: 1 }} 
+      />
+      <Button title="Update Profile" onPress={handleUpdateProfile} />
+
       <TextInput 
         value={newPassword} 
         onChangeText={setNewPassword} 
