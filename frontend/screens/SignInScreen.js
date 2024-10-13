@@ -14,7 +14,7 @@ const SignInScreen = ({ navigation }) => {
         email,
         password
       });
-      // Store token and navigate to home screen.
+      // Store token and navigate to home screen
       const token = response.data.token;
       navigation.navigate('Home', { token });
     } catch (error) {
