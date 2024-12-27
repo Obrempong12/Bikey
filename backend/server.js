@@ -9,7 +9,7 @@ dotenv.config();
 // Initialize express app
 const app = express();
 
-// Middleware to parse incoming JSON requests.
+// Middleware to parse incoming JSON requests
 app.use(express.json());
 
 // Connect to the database
