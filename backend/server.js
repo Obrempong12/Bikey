@@ -3,7 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
-// Load environment variables.
+// Load environment variables
 dotenv.config();
 
 // Initialize express app
