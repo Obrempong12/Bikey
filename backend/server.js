@@ -23,7 +23,7 @@ const rideRoutes = require('./routes/rideRoutes');
 app.use('/api/users', userRoutes);
 app.use('/api/rides', rideRoutes);
 
-// Error handling middleware.
+// Error handling middleware
 const { errorHandler } = require('./utils/errorHandler');
 app.use(errorHandler);
 
