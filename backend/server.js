@@ -27,7 +27,7 @@ app.use('/api/rides', rideRoutes);
 const { errorHandler } = require('./utils/errorHandler');
 app.use(errorHandler);
 
-// Server listener.
+// Server listener
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
