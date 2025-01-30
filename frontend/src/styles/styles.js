@@ -1,37 +1,50 @@
 // src/styles/styles.js
 import { StyleSheet } from 'react-native';
-import theme from './theme';
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.background, // White background
-    padding: theme.spacing.medium,
+    padding: 20,
+    backgroundColor: '#FFFFFF', // White background
   },
   header: {
-    fontSize: theme.fontSize.large,
-    color: theme.colors.textPrimary, // Black header text
+    fontSize: 24,
     fontWeight: 'bold',
+    color: '#000000', // Black text for headers
+    marginBottom: 20,
   },
   button: {
-    backgroundColor: theme.colors.primary, // Yellow button background
-    paddingVertical: theme.spacing.medium,
-    paddingHorizontal: theme.spacing.large,
-    borderRadius: theme.buttonRadius,
+    backgroundColor: '#FFD700', // Yellow for buttons
+    padding: 10,
+    borderRadius: 5,
     alignItems: 'center',
   },
   buttonText: {
-    color: theme.colors.buttonText, // White text on buttons
-    fontSize: theme.fontSize.medium,
+    color: '#000000', // Black text for buttons
+    fontSize: 16,
   },
-  textInput: {
+  input: {
+    borderColor: '#FFD700', // Yellow borders for inputs
     borderWidth: 1,
-    borderColor: theme.colors.secondary, // Black border for input fields
-    padding: theme.spacing.small,
-    borderRadius: theme.buttonRadius,
-    color: theme.colors.textPrimary, // Black text
-    marginBottom: theme.spacing.medium,
+    padding: 10,
+    borderRadius: 5,
+    marginBottom: 15,
+    color: '#000000', // Black text for inputs
+  },
+  colors: {
+    primary: '#FFD700', // Yellow as primary color
+    secondary: '#000000', // Black as secondary color
+    background: '#FFFFFF', // White background
+    textPrimary: '#000000', // Black text
+  },
+  fontSize: {
+    small: 14,
+    medium: 18,
+    large: 24,
+  },
+  spacing: {
+    small: 10,
+    medium: 15,
+    large: 20,
   },
 });
-
-export default styles;
