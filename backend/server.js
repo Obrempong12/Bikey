@@ -15,7 +15,7 @@ app.use(express.json());
 // Connect to the database
 connectDB();
 
-// Import routes
+// Import route
 const userRoutes = require('./routes/userRoutes');
 const rideRoutes = require('./routes/rideRoutes');
 
@@ -31,4 +31,4 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-});
+}
