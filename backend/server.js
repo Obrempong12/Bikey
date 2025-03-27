@@ -15,7 +15,7 @@ app.use(express.json());
 // Connect to the database
 connectDB();
 
-// Import route
+// Import routes
 const userRoutes = require('./routes/userRoutes');
 const rideRoutes = require('./routes/rideRoutes');
 
