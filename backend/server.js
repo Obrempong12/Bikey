@@ -19,7 +19,7 @@ connectDB();
 const userRoutes = require('./routes/userRoutes');
 const rideRoutes = require('./routes/rideRoutes');
 
-// Route
+// Routes.
 app.use('/api/users', userRoutes);
 app.use('/api/rides', rideRoutes);
 
